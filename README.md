@@ -63,19 +63,18 @@ Retrieve the Fargate Service endpoint from the `cdk deploy` output. Example of t
 CdkStack.MyFargateServiceServiceURL1234567D = http://CdkSt-MyFar-123456789ABC-123456789.ap-southeast-2.elb.amazonaws.com
 ```
 
-Make a POST request to that endpoint. For example:
+Send requests to the endpoint. For example:
 
 ```bash
+
+# send a GET request to the root
+curl --location --request POST '<REPLACE WITH FARGATE SERVICE URL>' \
+
+# send a POST request to the `rollDie` location
 curl --location --request POST '<REPLACE WITH FARGATE SERVICE URL>/rollDie' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "application": "serverless fargate"
-}'
-# Example
-curl --location --request POST 'http://CdkSt-MyFar-123456789ABC-123456789.ap-southeast-2.elb.amazonaws.com/rollDie' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "application": "serverless fargate"
+    "name": "dancfox"
 }'
 ```
 
